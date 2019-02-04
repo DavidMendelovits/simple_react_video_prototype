@@ -2,7 +2,7 @@ import React from 'react';
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 import offset from 'videojs-offset';
-import framebyframe from 'videojs-framebyframe';
+import framebyframe from './videojs.framebyframe';
 
 export default class VideoPlayer extends React.Component {
   componentDidMount() {

@@ -54,3 +54,5 @@ function framebyframe(options) {
     });
 }
 videojs.plugin('framebyframe', framebyframe);
+
+export default framebyframe;
