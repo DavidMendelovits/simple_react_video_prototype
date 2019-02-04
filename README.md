@@ -1,3 +1,20 @@
+### TO DO:
+
+Make videojs component responsive to parent divs
+
+add keybinding for frame controls
+
+add option for splitscreen players
+
+screenshot button
+
+drag and drop functionality (it also won't work with local files)
+
+add a simple header with logo
+
+title: Training Stage portable video tool
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
