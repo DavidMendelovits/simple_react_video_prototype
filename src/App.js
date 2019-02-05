@@ -6,10 +6,9 @@ import videojs from 'video.js'
 const videoJsOptions = {
   autoplay: true,
   controls: true, 
-  width: "flex",
-  height: "flex",
+  fill: true,
   sources: [{
-      src: "http://www.parkourtheory.com/api/browse/frog_gainer.mp4",  
+      src: "frog_gainer.mp4",  
       type: "video/mp4"
   }], 
   plugins: {
@@ -27,12 +26,20 @@ const videoJsOptions = {
 class App extends Component {
   render() {
     return (
-      <div className="App"
-           id="player-container">
-           <div className="player">
-        <VideoPlayer {...videoJsOptions}/>
-            </div>
-      </div>
+      <main className="app">
+        <div className="header">
+        </div>
+        <div className="player-container">
+          <div className="player">
+            <VideoPlayer {...videoJsOptions}/>
+          </div>
+          <div className="player">
+            <VideoPlayer {...videoJsOptions}/>
+          </div>
+        </div>
+        <footer className="footer">
+        </footer>
+      </main>
     );
   }
 }
