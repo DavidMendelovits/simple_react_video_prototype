@@ -23,11 +23,16 @@
 
 .header {
   flex: 1;
-  background-color: yellow; 
+  background-color: white; 
+}
+
+#logo {
+  width: 300px;
+  height: 200px;
 }
 
 .footer {
-  background-color: green;
+  background-color: white;
   flex: 1;
 }
 
