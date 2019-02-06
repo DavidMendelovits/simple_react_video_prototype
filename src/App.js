@@ -78,7 +78,7 @@ class App extends Component {
   handleChangeFile = (file) => {
     fileReader = new FileReader();
     fileReader.onloadend = this.handleFile;
-    vidInfo = fileReader.readAsBinaryString(file.target.files[0]);
+    vidInfo = fileReader.readAsDataURL(file.target.files[0]);
   }
 
   render() {
