@@ -1,16 +1,18 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import VideoPlayer from './vidjs';
+import input from './vidjs';
 import videojs from 'video.js';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
+import Wrapper from './wrapper'
 
 const video1Options = {
   autoplay: true,
   controls: true, 
   fill: true,
   sources: [{
-      src: "frog_gainer.mp4",  
+      src: "castback.mp4",  
       type: "video/mp4"
   }], 
   plugins: {
@@ -30,7 +32,7 @@ const video2Options = {
   controls: true, 
   fill: true,
   sources: [{
-      src: vidInfo,  
+      src: "http://www.parkourtheory.com/api/browse/castaway.mp4",
       type: "video/mp4"
   }], 
   plugins: {
@@ -47,7 +49,7 @@ const video2Options = {
 
 let fileReader;
 
-let vidInfo;
+let vidInfo = "castback.mp4";
 
 class App extends Component {
 
@@ -72,13 +74,14 @@ class App extends Component {
   handleFile = (e) => {
     const content = fileReader.result;
 
-    console.log('file content', content);
+ //   console.log('file content', content);
   }
 
   handleChangeFile = (file) => {
     fileReader = new FileReader();
     fileReader.onloadend = this.handleFile;
     vidInfo = fileReader.readAsDataURL(file.target.files[0]);
+    
   }
 
   render() {
@@ -96,14 +99,12 @@ class App extends Component {
         </div>
         <div className="player-container">
           <div className="player">
-            <VideoPlayer {...video1Options}/>
-          </div>
-          <div className="player">
-            <VideoPlayer {...video2Options}/>
+          <Wrapper src={vidInfo} />
+          
           </div>
         </div>
           <footer className="footer">
-            <div className="upload">
+          <div className="upload">
               <input  type="file"
                       id="file"
                       className="input-file"
@@ -118,20 +119,20 @@ class App extends Component {
 }
 
 export default App;
-/*                <Dropzone accept="video/*"
-                          onDrop={ e => this.handleChangeFile(e.target.files[0])}
+/*                <dropzone accept="video/*"
+                          ondrop={ e => this.handlechangefile(e.target.files[0])}
                 >
-                {({getRootProps}) => (
-                  <div {...getRootProps()}>
+                {({getrootprops}) => (
+                  <div {...getrootprops()}>
                 drop here
                 </div>
                 )}
-                </Dropzone>
-                <Fragment>
+                </dropzone>
+                <fragment>
                   {this.state.files.map((file) => (
                     <p>
                       {file.name}
                     </p>
                   ))}
-                  </Fragment>
+                  </fragment>
             </div>*/
