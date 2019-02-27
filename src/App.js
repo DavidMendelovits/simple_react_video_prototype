@@ -104,14 +104,7 @@ class App extends Component {
           </div>
         </div>
           <footer className="footer">
-          <div className="upload">
-              <input  type="file"
-                      id="file"
-                      className="input-file"
-                      accept=".mp4"
-                      onChange={e => this.handleChangeFile(e)}
-              />
-            </div>
+   
           </footer>
       </main>
     )

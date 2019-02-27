@@ -111,18 +111,6 @@ export default class VideoPlayer extends React.Component {
                   options2 : null,
                   number : 1}
   }
-
-  handleClick() {
-    this.setState({options: getOptions("backflip0.mp4")}, () => {
-      console.log(this.state.options);
-      this.player.dispose();
-      this.player = videojs(this.videoNode, this.state.options, function onPlayerReady() {
-        console.log('onPlayerReady', this);
-      })
-    })
-    this.render();
-  }
-
   componentDidMount() {
     // instantiate Video.js
   //    videojs.registerPlugin('offset', offset);
@@ -147,7 +135,10 @@ export default class VideoPlayer extends React.Component {
 
   componentWillReceiveProps(newProps) {
     console.log("recieving props!")
-    if (this.player) {
+    console.log("old props", this.props)
+    console.log("new props", newProps);
+    console.log("src", this.player.src);
+    if (this.player && (newProps.src != this.props.src)) {
       this.player.src({
         type: "video/mp4",
         src: newProps.src
