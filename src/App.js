@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import VideoPlayer from './vidjs';
+import VideoPlayer2 from './vid2';
 import input from './vidjs';
 import videojs from 'video.js';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import Wrapper from './wrapper'
+import Wrapper2 from './wrapper2'
 
 const video1Options = {
   autoplay: true,
@@ -50,6 +52,7 @@ const video2Options = {
 let fileReader;
 
 let vidInfo = "castback.mp4";
+let vidInfo2;
 
 class App extends Component {
 
@@ -100,6 +103,10 @@ class App extends Component {
         <div className="player-container">
           <div className="player">
           <Wrapper src={vidInfo} />
+          
+          </div>
+          <div className="player2">
+          <Wrapper2 src={vidInfo2} />
           
           </div>
         </div>

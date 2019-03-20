@@ -12,7 +12,9 @@
     "superagent": "^4.1.0",
     "video.js": "^7.4.1",
     "videojs-framebyframe": "^1.0.1",
+    "videojs-hotkeys": "^0.2.25",
     "videojs-offset": "^2.0.0-beta.2",
+    "videojs-playbackrate-adjuster": "^1.0.0",
     "videojs-replay": "^1.1.0"
   },
   "scripts": {

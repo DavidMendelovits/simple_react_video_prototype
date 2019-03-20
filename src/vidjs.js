@@ -77,7 +77,7 @@ let options2;
 let number;
 let fileInfo = "backflip1.mp4";
 let vidOptions;
-
+/*
 function getOptions(source) {
  vidOptions = {
   autoplay: true,
@@ -87,6 +87,18 @@ function getOptions(source) {
       src: source,
       type: "video/mp4"
   }], 
+  userActions: {
+    hotkeys: function(event) {
+      console.log(event);
+      if (event.which === 88) {
+        videojs.pause();
+      }
+      if (event.which === 89) {
+        videojs.play();
+      }
+    }
+  },
+  playbackRates: [0.25, 1, 1.5, 2],
   plugins: {
   //  offset: { start: 1, end: 1, restart_beginning: true }
     framebyframe: {
@@ -95,15 +107,17 @@ function getOptions(source) {
         { text: '-1', step: -1 },
         { text: '1', step: 1 }
         ]
-      }
+    },
+    offset: {
     }
   }
-
+  
+ }
   console.log("condiguring options...." )
   console.log(vidOptions);
   return vidOptions;
 }
-
+*/
 export default class VideoPlayer extends React.Component {
   constructor(props) {
     super(props);
@@ -111,15 +125,55 @@ export default class VideoPlayer extends React.Component {
                   options2 : null,
                   number : 1}
   }
+
+getOptions(source) {
+ vidOptions = {
+  autoplay: true,
+  controls: true, 
+  fill: true,
+  sources: [{
+      src: source,
+      type: "video/mp4"
+  }], 
+  userActions: {
+    hotkeys: function(event) {
+      console.log(event);
+      if (event.which === 88) {
+        videojs.pause();
+      }
+      if (event.which === 89) {
+        videojs.play();
+      }
+    }
+  },
+  playbackRates: [0.25, 1, 1.5, 2],
+  plugins: {
+  //  offset: { start: 1, end: 1, restart_beginning: true }
+    framebyframe: {
+      fps: 30,
+      steps: [
+        { text: '-1', step: -1 },
+        { text: '1', step: 1 }
+        ]
+    },
+    offset: {
+    }
+  }
+  
+ }
+  console.log("condiguring options...." )
+  console.log(vidOptions);
+  return vidOptions;
+}
   componentDidMount() {
     // instantiate Video.js
   //    videojs.registerPlugin('offset', offset);
-    this.setState({options2: getOptions("backflip0.mp4"), number: number + 1})
     console.log("attempting reconfigure options...")
     console.log(this.state.options2)
     
     console.log(this.state)
       videojs.registerPlugin('framebyframe', framebyframe);
+      videojs.registerPlugin('offset', offset);
       this.player = videojs(this.videoNode, this.state.options, function onPlayerReady() {
       console.log('onPlayerReady', this);
 
@@ -131,6 +185,7 @@ export default class VideoPlayer extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     console.log("component did update!");
+
   }
 
   componentWillReceiveProps(newProps) {

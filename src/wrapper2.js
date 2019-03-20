@@ -8,8 +8,7 @@ import Dropzone from 'react-dropzone';
 import classNames from 'classnames'
 
 let fileReader;
-
-let vidInfo;
+let vidInfo = "backflip0.mp4";
 
 export default class Wrapper extends React.Component {
     constructor(props) {
@@ -17,7 +16,7 @@ export default class Wrapper extends React.Component {
     }
     handleClick() {
       console.log("click");
-//    vidInfo = "/home/david/gopro/GH012846.MP4";
+      vidInfo = "backflip1.mp4";
       this.forceUpdate();
     }
 
