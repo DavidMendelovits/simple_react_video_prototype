@@ -71,13 +71,15 @@ import 'video.js/dist/video-js.css';
 import offset from 'videojs-offset';
 import framebyframe from './videojs.framebyframe';
 import { stat } from 'fs';
+import shortCuts from './hotkeys.js';
+
 
 let options;
 let options2;
 let number;
 let fileInfo = "backflip1.mp4";
 let vidOptions;
-/*
+
 function getOptions(source) {
  vidOptions = {
   autoplay: true,
@@ -117,7 +119,7 @@ function getOptions(source) {
   console.log(vidOptions);
   return vidOptions;
 }
-*/
+
 export default class VideoPlayer extends React.Component {
   constructor(props) {
     super(props);
@@ -125,46 +127,6 @@ export default class VideoPlayer extends React.Component {
                   options2 : null,
                   number : 1}
   }
-
-getOptions(source) {
- vidOptions = {
-  autoplay: true,
-  controls: true, 
-  fill: true,
-  sources: [{
-      src: source,
-      type: "video/mp4"
-  }], 
-  userActions: {
-    hotkeys: function(event) {
-      console.log(event);
-      if (event.which === 88) {
-        videojs.pause();
-      }
-      if (event.which === 89) {
-        videojs.play();
-      }
-    }
-  },
-  playbackRates: [0.25, 1, 1.5, 2],
-  plugins: {
-  //  offset: { start: 1, end: 1, restart_beginning: true }
-    framebyframe: {
-      fps: 30,
-      steps: [
-        { text: '-1', step: -1 },
-        { text: '1', step: 1 }
-        ]
-    },
-    offset: {
-    }
-  }
-  
- }
-  console.log("condiguring options...." )
-  console.log(vidOptions);
-  return vidOptions;
-}
   componentDidMount() {
     // instantiate Video.js
   //    videojs.registerPlugin('offset', offset);
@@ -178,6 +140,7 @@ getOptions(source) {
       console.log('onPlayerReady', this);
 
     });
+    this.player.getChild('controlBar').addChild('shortCuts', {});
   }
   componentWillUpdate(nextProps, nextState) {
     console.log("component will update!");
@@ -198,6 +161,7 @@ getOptions(source) {
         type: "video/mp4",
         src: newProps.src
       })
+      this.player.pause();
     }
   }
 
