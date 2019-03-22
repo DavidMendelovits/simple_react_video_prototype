@@ -22,7 +22,7 @@ export default props => {
           action: "replay",
           source: "shortcut"
         };
-        actions.replay(0.1, operation);
+        actions.replay(1/30, operation);
       }
     },
     {
@@ -38,7 +38,7 @@ export default props => {
           action: "forward",
           source: "shortcut"
         };
-        actions.forward(0.1, operation);
+        actions.forward(1/30, operation);
       }
     }
   ];
@@ -46,8 +46,8 @@ export default props => {
     <Player>
       <source src="frog_gainer.mp4" type="video/mp4" />
       <ControlBar autoHide={false}>
-        <ReplayControl onClick={console.log("Replay")} seconds={0.04} />
-        <ForwardControl seconds={0.04} />
+        <ReplayControl onClick={console.log("Replay")} seconds={1/30} />
+        <ForwardControl seconds={1/30} />
       </ControlBar>
       <Shortcut shortcuts={shortcuts} />
     </Player>

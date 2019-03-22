@@ -3,6 +3,7 @@ import "./App.css";
 // import VideoPlayer from './vidjs';
 import VideoPlayer from "./VideoPlayer";
 // import videojs from 'video.js'
+import "video-react/dist/video-react.css"
 
 class App extends Component {
   render() {
